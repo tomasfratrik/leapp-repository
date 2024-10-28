@@ -150,18 +150,30 @@ def set_resource_limits():
     :raises: `CommandError` if the resource limits cannot be set
     """
 
+    def set_resource_limit(resource_type, soft, hard):
+        rtype_string = (
+            'open file descriptors' if resource_type == resource.RLIMIT_NOFILE 
+            else 'writable file size' if resource_type == resource.RLIMIT_FSIZE 
+            else 'unknown resource'
+        )
+        try:
+            resource.setrlimit(resource_type, (soft, hard))
+        except ValueError as err:
+            raise CommandError(
+                'Failure occurred while attempting to set soft limit higher than the hard limit. '
+                'Resource type: {}, error: {}'.format(rtype_string, err)
+            )
+        except OSError as err:
+            raise CommandError(
+                'Failed to set resource limit. Resource type: {}, error: {}'.format(rtype_string, err)
+            )
+
     soft_nofile, _ = resource.getrlimit(resource.RLIMIT_NOFILE)
     soft_fsize, _ = resource.getrlimit(resource.RLIMIT_FSIZE)
     nofile_limit = 1024*16
 
     if soft_nofile < nofile_limit:
-        try:
-            resource.setrlimit(resource.RLIMIT_NOFILE, (nofile_limit, nofile_limit))
-        except OSError as err:
-            raise CommandError('Failed to set limit for maximum number of open file descriptors: {}'.format(err))
+        set_resource_limit(resource.RLIMIT_NOFILE, nofile_limit, nofile_limit)
 
     if soft_fsize != resource.RLIM_INFINITY:
-        try:
-            resource.setrlimit(resource.RLIMIT_FSIZE, (resource.RLIM_INFINITY, resource.RLIM_INFINITY))
-        except OSError as err:
-            raise CommandError('Failed to set limit for maximum writeable file size: {}'.format(err))
+        set_resource_limit(resource.RLIMIT_FSIZE, resource.RLIM_INFINITY, resource.RLIM_INFINITY)
