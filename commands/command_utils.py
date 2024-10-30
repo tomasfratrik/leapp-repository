@@ -152,8 +152,8 @@ def set_resource_limits():
 
     def set_resource_limit(resource_type, soft, hard):
         rtype_string = (
-            'open file descriptors' if resource_type == resource.RLIMIT_NOFILE 
-            else 'writable file size' if resource_type == resource.RLIMIT_FSIZE 
+            'open file descriptors' if resource_type == resource.RLIMIT_NOFILE
+            else 'writable file size' if resource_type == resource.RLIMIT_FSIZE
             else 'unknown resource'
         )
         try:
