@@ -1,5 +1,6 @@
 {
   "provided_data_streams": [
+    "2.0",
     "3.0",
     "3.1",
     "3.2"
@@ -1557,7 +1558,7 @@
       "device_id": "",
       "device_name": "",
       "device_type": "pci",
-      "driver_name": "3w-9xxx",
+      "driver_name": "3w_9xxx",
       "maintained_in_rhel": []
     },
     {
@@ -1568,7 +1569,7 @@
       "device_id": "",
       "device_name": "",
       "device_type": "pci",
-      "driver_name": "3w-sas",
+      "driver_name": "3w_sas",
       "maintained_in_rhel": []
     },
     {
@@ -2429,7 +2430,7 @@
       "device_id": "",
       "device_name": "",
       "device_type": "pci",
-      "driver_name": "acard-ahci",
+      "driver_name": "acard_ahci",
       "maintained_in_rhel": []
     },
     {
@@ -2891,7 +2892,7 @@
       "device_id": "",
       "device_name": "",
       "device_type": "pci",
-      "driver_name": "firewire-core",
+      "driver_name": "firewire_core",
       "maintained_in_rhel": [
         7,
         8,
@@ -2940,7 +2941,8 @@
       "available_in_rhel": [
         7,
         8,
-        9
+        9,
+        10
       ],
       "deprecation_announced": "",
       "device_id": "",
@@ -2949,7 +2951,9 @@
       "driver_name": "hfi1",
       "maintained_in_rhel": [
         7,
-        8
+        8,
+        9,
+        10
       ]
     },
     {
@@ -4265,6 +4269,30 @@
     },
     {
       "available_in_rhel": [
+        9,
+        10
+      ],
+      "deprecation_announced": "",
+      "device_id": "0x15B3:0x1023",
+      "device_name": "ConnectX-8",
+      "device_type": "pci",
+      "driver_name": "mlx5",
+      "maintained_in_rhel": [
+        9,
+        10
+      ]
+    },
+    {
+      "available_in_rhel": [],
+      "deprecation_announced": "",
+      "device_id": "0x15B3:0x1025",
+      "device_name": "ConnectX-9",
+      "device_type": "pci",
+      "driver_name": "mlx5",
+      "maintained_in_rhel": []
+    },
+    {
+      "available_in_rhel": [
         7,
         8,
         9,
@@ -4276,7 +4304,9 @@
       "device_type": "pci",
       "driver_name": "mlx5",
       "maintained_in_rhel": [
-        7
+        7,
+        9,
+        10
       ]
     },
     {
@@ -4828,7 +4858,7 @@
       "device_id": "",
       "device_name": "",
       "device_type": "pci",
-      "driver_name": "nvmet-fc",
+      "driver_name": "nvmet_fc",
       "maintained_in_rhel": [
         7
       ]
@@ -4844,7 +4874,7 @@
       "device_id": "",
       "device_name": "",
       "device_type": "pci",
-      "driver_name": "nvmet-tcp",
+      "driver_name": "nvmet_tcp",
       "maintained_in_rhel": [
         7
       ]
