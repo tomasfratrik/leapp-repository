@@ -13,7 +13,6 @@
         10
       ],
       "deprecation_announced": "",
-      "device_id": "aarch64:Ampere:NeoverseN1",
       "device_name": "Ampere Altra",
       "device_type": "cpu",
       "driver_name": "",
